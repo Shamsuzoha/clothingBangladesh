@@ -1,0 +1,1974 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Clothing Bangladesh: Source clothing &amp; merch production without
+      opening a factory relationship yourself
+    </title>
+    <meta
+      name="description"
+      content="Clothing Bangladesh connects founders, small brands, and creators with vetted garment manufacturers in Bangladesh, handling sourcing, sampling, and production on runs as small as a few dozen pieces."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #1b2a41;
+        --ink-dark: #121c29;
+        --ink-darker: #0d141e;
+        --red: #d6483c;
+        --red-dark: #b93a2f;
+        --canvas: #eae5da;
+        --canvas-line: #d3cbb9;
+        --paper: #f6f3ec;
+        --paper-2: #ffffff;
+        --gold: #ae8a3e;
+        --green: #4c7a6b;
+        --ink-60: rgba(27, 42, 65, 0.62);
+        --ink-40: rgba(27, 42, 65, 0.4);
+        --cream-60: rgba(234, 229, 218, 0.68);
+        --cream-40: rgba(234, 229, 218, 0.44);
+        --radius-s: 3px;
+        --radius-m: 6px;
+        --max: 1180px;
+        --sans: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        --mono:
+          "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        * {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+        }
+      }
+      body {
+        margin: 0;
+        font-family: var(--sans);
+        background: var(--canvas);
+        color: var(--ink);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      img,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        color: inherit;
+      }
+      .container {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 28px;
+      }
+      section {
+        position: relative;
+      }
+      p {
+        margin: 0 0 1em;
+        max-width: 62ch;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        margin: 0;
+        font-family: var(--sans);
+      }
+      ::selection {
+        background: var(--red);
+        color: #fff;
+      }
+
+      /* ---------- Buttons ---------- */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--sans);
+        font-weight: 700;
+        font-size: 0.95rem;
+        padding: 13px 24px;
+        border-radius: 2px;
+        border: 1.5px solid transparent;
+        cursor: pointer;
+        text-decoration: none;
+        line-height: 1;
+        transition:
+          background-color 0.15s ease,
+          color 0.15s ease,
+          border-color 0.15s ease,
+          transform 0.1s ease;
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .btn-primary {
+        background: var(--red);
+        color: #fff;
+      }
+      .btn-primary:hover {
+        background: var(--red-dark);
+      }
+      .btn-line {
+        background: transparent;
+        color: var(--ink);
+        border-color: var(--ink);
+      }
+      .btn-line:hover {
+        background: var(--ink);
+        color: var(--canvas);
+      }
+      .btn-line-inv {
+        background: transparent;
+        color: var(--canvas);
+        border-color: var(--cream-40);
+      }
+      .btn-line-inv:hover {
+        background: var(--canvas);
+        color: var(--ink-dark);
+        border-color: var(--canvas);
+      }
+
+      /* ---------- Header ---------- */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: rgba(234, 229, 218, 0.92);
+        backdrop-filter: saturate(140%) blur(8px);
+        border-bottom: 1px solid var(--canvas-line);
+      }
+      .nav-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 28px;
+        max-width: var(--max);
+        margin: 0 auto;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        text-decoration: none;
+        color: var(--ink);
+      }
+      .brand svg {
+        width: 30px;
+        height: 30px;
+        flex: none;
+      }
+      .brand-word {
+        font-weight: 800;
+        font-size: 1.02rem;
+        letter-spacing: 0.01em;
+        line-height: 1;
+      }
+      .brand-word span {
+        font-weight: 300;
+        color: var(--red);
+        margin-left: 0.28em;
+      }
+      nav.links {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+      nav.links a {
+        font-size: 0.92rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--ink-60);
+        transition: color 0.15s;
+      }
+      nav.links a:hover {
+        color: var(--ink);
+      }
+      .nav-cta {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+      .burger {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 6px;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .burger span {
+        width: 22px;
+        height: 2px;
+        background: var(--ink);
+        display: block;
+      }
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 2px;
+        padding: 6px 28px 18px;
+        border-top: 1px solid var(--canvas-line);
+      }
+      .mobile-menu a,
+      .mobile-menu button {
+        padding: 12px 0;
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--ink);
+        border-bottom: 1px solid var(--canvas-line);
+        font-size: 0.98rem;
+        background: none;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        text-align: left;
+        font-family: var(--sans);
+        cursor: pointer;
+      }
+      .mobile-menu a:last-child,
+      .mobile-menu button:last-child {
+        border-bottom: none;
+      }
+      header.open .mobile-menu {
+        display: flex;
+      }
+
+      @media (max-width: 900px) {
+        nav.links {
+          display: none;
+        }
+        .nav-cta .btn-line {
+          display: none;
+        }
+        .burger {
+          display: flex;
+        }
+      }
+
+      /* ---------- Hero ---------- */
+      .hero {
+        padding: 76px 0 64px;
+        overflow: hidden;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 56px;
+        align-items: center;
+      }
+      .hero h1 {
+        font-size: clamp(2.35rem, 4.6vw, 3.9rem);
+        font-weight: 800;
+        letter-spacing: -0.015em;
+        line-height: 1.04;
+        color: var(--ink);
+      }
+      .hero p.lead {
+        font-size: 1.14rem;
+        color: var(--ink-60);
+        margin-top: 22px;
+        max-width: 46ch;
+      }
+      .hero-ctas {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-top: 32px;
+        flex-wrap: wrap;
+      }
+      .hero-note {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-top: 22px;
+        font-family: var(--mono);
+        font-size: 0.8rem;
+        color: var(--ink-60);
+      }
+      .hero-note .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--green);
+        flex: none;
+      }
+
+      /* ---------- Ticket card ---------- */
+      .ticket-wrap {
+        display: flex;
+        justify-content: center;
+      }
+      .ticket {
+        background: var(--paper-2);
+        width: 100%;
+        max-width: 390px;
+        padding: 26px 26px 22px;
+        border: 1px solid #dfd9cb;
+        box-shadow:
+          0 26px 60px -24px rgba(18, 28, 41, 0.35),
+          0 2px 0 rgba(18, 28, 41, 0.03);
+        transform: rotate(-2.4deg);
+        position: relative;
+      }
+      .ticket::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 0;
+        border-top: 2px dashed #c9c1ac;
+        margin-top: 64px;
+      }
+      .ticket-holes {
+        position: absolute;
+        top: 59px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 14px;
+      }
+      .ticket-holes span {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--canvas);
+        border: 1px solid #d9d2c1;
+      }
+      .ticket-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding-bottom: 20px;
+      }
+      .ticket-head .t-label {
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        color: var(--ink-40);
+        text-transform: uppercase;
+      }
+      .ticket-head .t-num {
+        font-family: var(--mono);
+        font-size: 0.98rem;
+        font-weight: 600;
+        color: var(--ink);
+        margin-top: 3px;
+      }
+      .ticket-icon {
+        width: 22px;
+        height: 22px;
+        opacity: 0.8;
+      }
+      .ticket-rows {
+        margin-top: 34px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .t-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 14px;
+        border-bottom: 1px solid #efebe1;
+        padding-bottom: 13px;
+      }
+      .t-row:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .t-row .t-key {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.07em;
+        color: var(--ink-40);
+        text-transform: uppercase;
+        flex: none;
+      }
+      .t-row .t-val {
+        font-family: var(--mono);
+        font-size: 0.86rem;
+        font-weight: 600;
+        color: var(--ink);
+        text-align: right;
+      }
+      .t-row .t-val.status {
+        color: var(--green);
+      }
+      .stamp {
+        position: absolute;
+        right: 22px;
+        bottom: 26px;
+        width: 104px;
+        height: 104px;
+        border-radius: 50%;
+        border: 2px solid var(--red);
+        color: var(--red);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transform: rotate(9deg);
+        font-family: var(--mono);
+        font-size: 0.6rem;
+        letter-spacing: 0.05em;
+        font-weight: 600;
+        line-height: 1.35;
+        padding: 10px;
+        opacity: 0.88;
+      }
+
+      @media (max-width: 860px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 44px;
+        }
+        .ticket-wrap {
+          order: -1;
+        }
+        .ticket {
+          transform: rotate(-1.2deg);
+          max-width: 360px;
+        }
+      }
+
+      /* ---------- Proof strip ---------- */
+      .proof {
+        border-top: 1px solid var(--canvas-line);
+        border-bottom: 1px solid var(--canvas-line);
+        background: var(--paper);
+        padding: 26px 0;
+      }
+      .proof-inner {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 28px 40px;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .proof-line {
+        max-width: 38ch;
+        font-size: 0.95rem;
+        color: var(--ink-60);
+      }
+      .proof-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+      }
+      .proof-stats div {
+        font-family: var(--mono);
+        font-size: 0.78rem;
+        color: var(--ink-60);
+        padding: 0 22px;
+        border-left: 1px solid var(--canvas-line);
+      }
+      .proof-stats div:first-child {
+        border-left: none;
+        padding-left: 0;
+      }
+
+      /* ---------- Section shell ---------- */
+      .section {
+        padding: 96px 0;
+      }
+      .section-tight {
+        padding: 80px 0;
+      }
+      .section-head {
+        max-width: 640px;
+        margin-bottom: 56px;
+      }
+      .section-head h2 {
+        font-size: clamp(1.7rem, 2.9vw, 2.35rem);
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        color: var(--ink);
+      }
+      .section-head p {
+        color: var(--ink-60);
+        margin-top: 14px;
+        font-size: 1.04rem;
+      }
+      .dark {
+        background: var(--ink-dark);
+        color: var(--canvas);
+      }
+      .dark .section-head h2 {
+        color: #fff;
+      }
+      .dark .section-head p {
+        color: var(--cream-60);
+      }
+
+      /* ---------- How it works ---------- */
+      .steps {
+        position: relative;
+        max-width: 820px;
+      }
+      .steps::before {
+        content: "";
+        position: absolute;
+        left: 23px;
+        top: 14px;
+        bottom: 14px;
+        width: 1px;
+        background: repeating-linear-gradient(
+          to bottom,
+          var(--canvas-line) 0 6px,
+          transparent 6px 12px
+        );
+      }
+      .step {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        gap: 24px;
+        padding-bottom: 46px;
+        position: relative;
+      }
+      .step:last-child {
+        padding-bottom: 0;
+      }
+      .step-num {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--paper-2);
+        border: 1.5px solid var(--ink);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--mono);
+        font-weight: 600;
+        font-size: 0.95rem;
+        z-index: 1;
+        flex: none;
+      }
+      .step h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .step p {
+        color: var(--ink-60);
+        font-size: 1rem;
+      }
+
+      /* ---------- Audiences ---------- */
+      .aud-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+        background: var(--canvas-line);
+      }
+      .aud-card {
+        background: var(--paper);
+        padding: 44px 40px;
+      }
+      .aud-tag {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--red);
+        margin-bottom: 16px;
+        display: block;
+      }
+      .aud-card h3 {
+        font-size: 1.55rem;
+        font-weight: 700;
+        margin-bottom: 14px;
+        letter-spacing: -0.01em;
+      }
+      .aud-card > p {
+        color: var(--ink-60);
+      }
+      .aud-list {
+        list-style: none;
+        margin: 22px 0 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .aud-list li {
+        display: flex;
+        gap: 11px;
+        font-size: 0.97rem;
+        color: var(--ink);
+      }
+      .aud-list li::before {
+        content: "";
+        width: 5px;
+        height: 5px;
+        margin-top: 9px;
+        background: var(--red);
+        flex: none;
+      }
+      .aud-moq {
+        margin-top: 28px;
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        font-family: var(--mono);
+        font-size: 0.76rem;
+        color: var(--ink-60);
+        border: 1px solid var(--canvas-line);
+        padding: 8px 14px;
+        background: var(--paper-2);
+      }
+      .aud-moq b {
+        color: var(--ink);
+        font-size: 0.86rem;
+      }
+      @media (max-width: 760px) {
+        .aud-grid {
+          grid-template-columns: 1fr;
+        }
+        .aud-card {
+          padding: 38px 26px;
+        }
+      }
+
+      /* ---------- Services manifest ---------- */
+      .manifest {
+        border-top: 1px solid var(--canvas-line);
+      }
+      .m-row {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 32px;
+        padding: 28px 0;
+        border-bottom: 1px solid var(--canvas-line);
+      }
+      .m-row h4 {
+        font-size: 1.08rem;
+        font-weight: 700;
+      }
+      .m-row p {
+        color: var(--ink-60);
+        margin: 0;
+        font-size: 0.98rem;
+      }
+      @media (max-width: 700px) {
+        .m-row {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+      }
+
+      /* ---------- Why Bangladesh ---------- */
+      .why-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: start;
+      }
+      .why-grid p {
+        color: var(--cream-60);
+        font-size: 1.05rem;
+      }
+      .stat-strip {
+        display: flex;
+        flex-direction: column;
+        gap: 26px;
+      }
+      .stat {
+        border-top: 1px solid rgba(234, 229, 218, 0.16);
+        padding-top: 18px;
+      }
+      .stat .num {
+        font-family: var(--mono);
+        font-weight: 600;
+        font-size: 1.9rem;
+        color: #fff;
+        display: block;
+      }
+      .stat .cap {
+        font-size: 0.9rem;
+        color: var(--cream-60);
+        margin-top: 4px;
+      }
+      @media (max-width: 760px) {
+        .why-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
+
+      /* ---------- Pricing ---------- */
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+      }
+      .pricing-grid p {
+        color: var(--ink-60);
+        font-size: 1.03rem;
+      }
+      .calc {
+        background: var(--paper-2);
+        border: 1px solid var(--canvas-line);
+      }
+      .calc-head {
+        padding: 20px 26px;
+        border-bottom: 1px solid var(--canvas-line);
+      }
+      .calc-head .t-label {
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-40);
+      }
+      .calc-head h4 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-top: 4px;
+      }
+      .calc-body {
+        padding: 22px 26px;
+      }
+      .c-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid #efebe1;
+        font-size: 0.94rem;
+      }
+      .c-row span:first-child {
+        color: var(--ink-60);
+      }
+      .c-row span:last-child {
+        font-family: var(--mono);
+        font-weight: 600;
+      }
+      .c-row.total {
+        border-bottom: none;
+        border-top: 1.5px solid var(--ink);
+        margin-top: 4px;
+        padding-top: 16px;
+      }
+      .c-row.total span {
+        font-size: 1.05rem;
+      }
+      .calc-note {
+        padding: 14px 26px 22px;
+        font-size: 0.78rem;
+        color: var(--ink-40);
+        font-family: var(--mono);
+      }
+      @media (max-width: 820px) {
+        .pricing-grid {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+      }
+
+      /* ---------- FAQ ---------- */
+      .faq {
+        max-width: 760px;
+      }
+      .faq-item {
+        border-bottom: 1px solid var(--canvas-line);
+      }
+      .faq-q {
+        width: 100%;
+        text-align: left;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 22px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        font-family: var(--sans);
+        font-size: 1.03rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .faq-q .plus {
+        font-family: var(--mono);
+        font-size: 1.2rem;
+        color: var(--red);
+        flex: none;
+        transition: transform 0.18s ease;
+      }
+      .faq-item.open .faq-q .plus {
+        transform: rotate(45deg);
+      }
+      .faq-a {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.25s ease;
+      }
+      .faq-a p {
+        padding-bottom: 22px;
+        color: var(--ink-60);
+        margin: 0;
+        font-size: 0.98rem;
+      }
+
+      /* ---------- Final CTA ---------- */
+      .cta-final {
+        background: var(--red);
+        color: #fff;
+        padding: 88px 0;
+        text-align: left;
+      }
+      .cta-final h2 {
+        font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        max-width: 16ch;
+      }
+      .cta-final p {
+        color: rgba(255, 255, 255, 0.85);
+        margin-top: 16px;
+        font-size: 1.06rem;
+      }
+      .cta-row {
+        display: flex;
+        gap: 18px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .cta-final .btn-primary {
+        background: #fff;
+        color: var(--red-dark);
+      }
+      .cta-final .btn-primary:hover {
+        background: #f2ece4;
+      }
+      .cta-final .btn-line-inv {
+        border-color: rgba(255, 255, 255, 0.55);
+        color: #fff;
+      }
+      .cta-final .btn-line-inv:hover {
+        background: #fff;
+        color: var(--red-dark);
+        border-color: #fff;
+      }
+
+      /* ---------- Footer ---------- */
+      footer {
+        background: var(--ink-darker);
+        color: var(--cream-60);
+        padding: 64px 0 30px;
+      }
+      .foot-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 40px;
+        padding-bottom: 48px;
+        border-bottom: 1px solid rgba(234, 229, 218, 0.12);
+      }
+      .foot-brand {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        margin-bottom: 16px;
+      }
+      .foot-brand svg {
+        width: 26px;
+        height: 26px;
+      }
+      .foot-brand .brand-word {
+        color: #fff;
+      }
+      .foot-brand .brand-word span {
+        color: var(--red);
+      }
+      .foot-grid p {
+        font-size: 0.92rem;
+        color: var(--cream-40);
+        max-width: 32ch;
+      }
+      .foot-col h5 {
+        font-size: 0.76rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--cream-40);
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+      .foot-col a,
+      .foot-quote-link {
+        display: block;
+        font-size: 0.92rem;
+        color: var(--cream-60);
+        text-decoration: none;
+        margin-bottom: 11px;
+      }
+      .foot-col a:hover,
+      .foot-quote-link:hover {
+        color: #fff;
+      }
+      .foot-quote-link {
+        background: none;
+        border: none;
+        padding: 0;
+        font-family: var(--sans);
+        text-align: left;
+        cursor: pointer;
+      }
+      .foot-bottom {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 14px;
+        padding-top: 26px;
+        font-size: 0.82rem;
+        color: var(--cream-40);
+      }
+      .foot-legal {
+        max-width: 60ch;
+        font-size: 0.82rem;
+        color: var(--cream-40);
+        padding-top: 22px;
+        line-height: 1.6;
+      }
+      @media (max-width: 780px) {
+        .foot-grid {
+          grid-template-columns: 1fr 1fr;
+          row-gap: 34px;
+        }
+      }
+      @media (max-width: 480px) {
+        .foot-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ---------- Quote modal ---------- */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(13, 20, 30, 0.55);
+        display: none;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 64px 20px;
+        overflow-y: auto;
+        z-index: 100;
+      }
+      .modal-overlay.open {
+        display: flex;
+      }
+      .modal {
+        background: var(--paper);
+        width: 100%;
+        max-width: 560px;
+        border: 1px solid #dfd9cb;
+        box-shadow: 0 30px 70px -20px rgba(13, 20, 30, 0.5);
+        position: relative;
+      }
+      .modal-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 28px 30px 0;
+      }
+      .modal-head h3 {
+        font-size: 1.4rem;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        max-width: 22ch;
+      }
+      .modal-head p {
+        color: var(--ink-60);
+        font-size: 0.95rem;
+        margin-top: 8px;
+      }
+      .modal-close {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 6px;
+        margin: -6px -6px 0 0;
+        color: var(--ink-60);
+        font-size: 1.3rem;
+        line-height: 1;
+        flex: none;
+      }
+      .modal-close:hover {
+        color: var(--ink);
+      }
+      .modal-body {
+        padding: 22px 30px 30px;
+      }
+      .field {
+        margin-bottom: 16px;
+      }
+      .field label {
+        display: block;
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--ink-40);
+        margin-bottom: 7px;
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        font-family: var(--sans);
+        font-size: 0.96rem;
+        color: var(--ink);
+        background: var(--paper-2);
+        border: 1px solid var(--canvas-line);
+        border-radius: 2px;
+        padding: 11px 13px;
+        resize: vertical;
+      }
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        outline: 2px solid var(--ink);
+        outline-offset: 1px;
+      }
+      .field-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      @media (max-width: 480px) {
+        .field-row {
+          grid-template-columns: 1fr;
+        }
+      }
+      .type-toggle {
+        display: flex;
+        gap: 10px;
+      }
+      .type-toggle label {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-family: var(--sans);
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: none;
+        letter-spacing: 0;
+        color: var(--ink);
+        background: var(--paper-2);
+        border: 1px solid var(--canvas-line);
+        padding: 11px 10px;
+        cursor: pointer;
+        text-align: center;
+      }
+      .type-toggle input {
+        width: auto;
+        accent-color: var(--red);
+      }
+      .modal-submit {
+        width: 100%;
+        justify-content: center;
+        margin-top: 6px;
+      }
+      .modal-note {
+        font-size: 0.8rem;
+        color: var(--ink-40);
+        margin-top: 14px;
+        text-align: center;
+      }
+      .modal-note a {
+        color: var(--ink-60);
+        text-decoration: underline;
+      }
+      .modal-status {
+        display: none;
+        padding: 14px 16px;
+        font-size: 0.92rem;
+        margin-bottom: 16px;
+        border: 1px solid var(--canvas-line);
+      }
+      .modal-status.show {
+        display: block;
+      }
+      .modal-status.success {
+        border-color: var(--green);
+        color: var(--green);
+        background: rgba(76, 122, 107, 0.08);
+      }
+      .modal-status.error {
+        border-color: var(--red);
+        color: var(--red-dark);
+        background: rgba(214, 72, 60, 0.06);
+      }
+    </style>
+  </head>
+  <body>
+    <header id="siteHeader">
+      <div class="nav-row">
+        <a href="#top" class="brand">
+          <svg
+            viewBox="40 37 140 140"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <circle
+              cx="110"
+              cy="78"
+              r="14"
+              fill="none"
+              stroke="#1B2A41"
+              stroke-width="8"
+            />
+            <circle cx="110" cy="78" r="6" fill="#D6483C" />
+            <line
+              x1="110"
+              y1="92"
+              x2="110"
+              y2="102"
+              stroke="#1B2A41"
+              stroke-width="8"
+              stroke-linecap="round"
+            />
+            <line
+              x1="60"
+              y1="102"
+              x2="160"
+              y2="102"
+              stroke="#1B2A41"
+              stroke-width="8"
+              stroke-linecap="round"
+            />
+            <path
+              d="M60,102 L110,150 L160,102"
+              fill="none"
+              stroke="#1B2A41"
+              stroke-width="8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span class="brand-word">CLOTHING<span>BANGLADESH</span></span>
+        </a>
+        <nav class="links">
+          <a href="#how">How it works</a>
+          <a href="#audiences">Who it's for</a>
+          <a href="#services">Services</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <div class="nav-cta">
+          <button type="button" class="btn btn-line" data-open-quote>
+            Get a quote
+          </button>
+          <button
+            class="burger"
+            id="burgerBtn"
+            aria-label="Open menu"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#how">How it works</a>
+        <a href="#audiences">Who it's for</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <button type="button" data-open-quote>Get a quote</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <h1>Start a clothing line without becoming a manufacturer.</h1>
+            <p class="lead">
+              Clothing Bangladesh connects founders, small brands, and creators
+              with vetted garment manufacturers in Bangladesh. We handle
+              sourcing, sampling, and production on runs as small as a few dozen
+              pieces.
+            </p>
+            <div class="hero-ctas">
+              <button type="button" class="btn btn-primary" data-open-quote>
+                Get a production quote
+              </button>
+              <a href="#how" class="btn btn-line">See how it works</a>
+            </div>
+            <div class="hero-note">
+              <span class="dot"></span>No cost to ask for a quote. You only pay
+              for what gets made.
+            </div>
+          </div>
+
+          <div class="ticket-wrap">
+            <div class="ticket">
+              <div class="ticket-head">
+                <div>
+                  <div class="t-label">Production Order</div>
+                  <div class="t-num">CB&nbsp;·&nbsp;0417</div>
+                </div>
+                <svg
+                  class="ticket-icon"
+                  viewBox="40 37 140 140"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <circle
+                    cx="110"
+                    cy="78"
+                    r="14"
+                    fill="none"
+                    stroke="#1B2A41"
+                    stroke-width="8"
+                  />
+                  <circle cx="110" cy="78" r="6" fill="#D6483C" />
+                  <line
+                    x1="110"
+                    y1="92"
+                    x2="110"
+                    y2="102"
+                    stroke="#1B2A41"
+                    stroke-width="8"
+                    stroke-linecap="round"
+                  />
+                  <line
+                    x1="60"
+                    y1="102"
+                    x2="160"
+                    y2="102"
+                    stroke="#1B2A41"
+                    stroke-width="8"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M60,102 L110,150 L160,102"
+                    fill="none"
+                    stroke="#1B2A41"
+                    stroke-width="8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <div class="ticket-holes">
+                <span></span><span></span><span></span><span></span><span></span
+                ><span></span>
+              </div>
+              <div class="ticket-rows">
+                <div class="t-row">
+                  <span class="t-key">Product</span
+                  ><span class="t-val">Heavyweight hoodie, 320gsm</span>
+                </div>
+                <div class="t-row">
+                  <span class="t-key">Origin</span
+                  ><span class="t-val">Dhaka, Bangladesh</span>
+                </div>
+                <div class="t-row">
+                  <span class="t-key">MOQ</span
+                  ><span class="t-val">36 units</span>
+                </div>
+                <div class="t-row">
+                  <span class="t-key">Lead time</span
+                  ><span class="t-val">5–7 weeks</span>
+                </div>
+                <div class="t-row">
+                  <span class="t-key">Status</span
+                  ><span class="t-val status">In sampling</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROOF STRIP -->
+      <div class="proof">
+        <div class="container proof-inner">
+          <p class="proof-line">
+            Every order runs through a manufacturer we've vetted in person,
+            checking fabric quality, working conditions, and on-time delivery.
+          </p>
+          <div class="proof-stats">
+            <div>Factories vetted in Dhaka &amp; Chattogram</div>
+            <div>MOQs from 24 units</div>
+            <div>One English-speaking point of contact</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOW IT WORKS -->
+      <section class="section" id="how">
+        <div class="container">
+          <div class="section-head">
+            <h2>How an order actually moves</h2>
+            <p>
+              No factory contacts, no minimum order relationships, no guessing
+              what's realistic to make.
+            </p>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div>
+                <h3>Send us the idea</h3>
+                <p>
+                  Share a design, a tech pack, or even a reference garment you
+                  like. Tell us the fabric, fit, and quantity you're thinking
+                  about, and we'll tell you what's realistic before you commit
+                  to anything.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div>
+                <h3>We match you with a manufacturer</h3>
+                <p>
+                  Your order goes to a buying house from our vetted network in
+                  Dhaka or Chattogram. We choose based on product type and
+                  quantity, not just whoever happens to have capacity that week.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div>
+                <h3>We run production and get it to you</h3>
+                <p>
+                  Sampling, fabric sourcing, and quality checks at multiple
+                  stages, then freight to your door. One point of contact from
+                  the first sample to the final shipment.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AUDIENCES -->
+      <section class="section-tight" id="audiences" style="padding-top: 0">
+        <div class="container">
+          <div class="section-head">
+            <h2>Two ways people work with us</h2>
+            <p>Same manufacturing network, different starting points.</p>
+          </div>
+        </div>
+        <div class="aud-grid">
+          <div class="aud-card">
+            <span class="aud-tag">For founders</span>
+            <h3>Launching a clothing brand</h3>
+            <p>
+              You're building an actual line (hoodies, tees, outerwear) and need
+              it done properly from the first run, not just cheaply.
+            </p>
+            <ul class="aud-list">
+              <li>Tech pack and pattern review before anything gets cut</li>
+              <li>Fabric and trim sourcing to your spec</li>
+              <li>Small pilot runs before you commit to volume</li>
+              <li>Support scaling reorders once a style sells</li>
+            </ul>
+          </div>
+          <div class="aud-card">
+            <span class="aud-tag">For creators</span>
+            <h3>Making merch that isn't a gamble</h3>
+            <p>
+              You need real product, fast, without holding inventory you can't
+              move or chasing down a factory yourself.
+            </p>
+            <ul class="aud-list">
+              <li>Runs as small as two or three dozen pieces per style</li>
+              <li>Fast turnaround for drops tied to a launch date</li>
+              <li>Reprints of exactly what sold, no reguessing sizes</li>
+              <li>Your branding, tags, and packaging, not ours</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section class="section" id="services">
+        <div class="container">
+          <div class="section-head">
+            <h2>What we handle</h2>
+            <p>
+              You keep the brand, the audience, and the design decisions. We
+              keep the production side moving.
+            </p>
+          </div>
+          <div class="manifest">
+            <div class="m-row">
+              <h4>Sourcing &amp; factory matching</h4>
+              <p>
+                Finding and vetting the right manufacturer for your product.
+                Fabric type, print method, and construction all factor into who
+                gets the order.
+              </p>
+            </div>
+            <div class="m-row">
+              <h4>Tech packs &amp; sampling</h4>
+              <p>
+                Turning a design or reference garment into a manufacturable
+                spec, then a physical sample you approve before bulk production
+                starts.
+              </p>
+            </div>
+            <div class="m-row">
+              <h4>Low-MOQ production</h4>
+              <p>
+                Running orders most factories turn away, from as few as two
+                dozen units per style, without the usual "come back at 500"
+                answer.
+              </p>
+            </div>
+            <div class="m-row">
+              <h4>Quality control</h4>
+              <p>
+                In-line checks during production and a pre-shipment inspection,
+                so sizing, stitching, or print issues get caught before they
+                reach you.
+              </p>
+            </div>
+            <div class="m-row">
+              <h4>Freight, duties &amp; customs</h4>
+              <p>
+                Door-to-door shipping with import paperwork handled on our end,
+                not left for you to figure out on arrival.
+              </p>
+            </div>
+            <div class="m-row">
+              <h4>Private label &amp; branding</h4>
+              <p>
+                Woven labels, hang tags, and packaging that make the finished
+                product look like your brand, not a factory sample.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY BANGLADESH -->
+      <section class="section dark">
+        <div class="container why-grid">
+          <div>
+            <div class="section-head" style="margin-bottom: 22px">
+              <h2>Why source from Bangladesh</h2>
+            </div>
+            <p>
+              Bangladesh's garment industry didn't happen overnight. It's the
+              product of decades of dedicated cotton and knitwear manufacturing,
+              a dense factory ecosystem stretching across Dhaka, Chattogram, and
+              Gazipur, and a workforce that already produces for many of the
+              world's largest apparel brands.
+            </p>
+            <p>
+              That same capability exists for a 36-piece hoodie order. It's just
+              rarely accessible from outside the industry. Vetting factories,
+              translating specs, chasing production updates: that's the gap we
+              sit in, so you don't have to.
+            </p>
+          </div>
+          <div class="stat-strip">
+            <div class="stat">
+              <span class="num">2nd</span
+              ><span class="cap"
+                >Largest ready-made garment exporter in the world</span
+              >
+            </div>
+            <div class="stat">
+              <span class="num">Decades</span
+              ><span class="cap"
+                >Of dedicated cotton &amp; knitwear manufacturing
+                experience</span
+              >
+            </div>
+            <div class="stat">
+              <span class="num">Dhaka · Chattogram · Gazipur</span
+              ><span class="cap"
+                >Core manufacturing regions our network covers</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRICING -->
+      <section class="section" id="pricing">
+        <div class="container pricing-grid">
+          <div>
+            <div class="section-head" style="margin-bottom: 22px">
+              <h2>How we get paid</h2>
+            </div>
+            <p>
+              We don't charge a platform fee, a listing fee, or a fee to get a
+              quote. Our commission is already built into the production price
+              your manufacturer quotes you, so the number you see is the number
+              you pay. No separate invoice from us.
+            </p>
+            <p>
+              If a factory quote changes mid-production because of a fabric
+              substitution or spec change, you're told before it happens, not
+              after.
+            </p>
+          </div>
+          <div class="calc">
+            <div class="calc-head">
+              <div class="t-label">Example order</div>
+              <h4>50 hoodies, 320gsm fleece</h4>
+            </div>
+            <div class="calc-body">
+              <div class="c-row">
+                <span>Factory production cost</span><span>$11.20 / unit</span>
+              </div>
+              <div class="c-row">
+                <span>Our commission (built in)</span><span>$1.80 / unit</span>
+              </div>
+              <div class="c-row">
+                <span>Freight &amp; duties (avg.)</span
+                ><span>$2.40 / unit</span>
+              </div>
+              <div class="c-row total">
+                <span>You pay</span><span>$15.40 / unit</span>
+              </div>
+            </div>
+            <div class="calc-note">
+              Illustrative example. Actual quotes vary by product, fabric, and
+              quantity.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section-tight" id="faq">
+        <div class="container">
+          <div class="section-head">
+            <h2>Common questions</h2>
+          </div>
+          <div class="faq">
+            <div class="faq-item">
+              <button class="faq-q">
+                Do I need my own factory contacts?<span class="plus">+</span>
+              </button>
+              <div class="faq-a">
+                <p>
+                  No. That's the part we handle. You bring the design and the
+                  quantity you're thinking about; we match you with a
+                  manufacturer suited to that product.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q">
+                What's the minimum order?<span class="plus">+</span>
+              </button>
+              <div class="faq-a">
+                <p>
+                  It depends on the product and fabric, but most of our partner
+                  factories will take on runs from around 24 to 36 units per
+                  style, well below typical factory minimums.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q">
+                Do you manufacture anything yourselves?<span class="plus"
+                  >+</span
+                >
+              </button>
+              <div class="faq-a">
+                <p>
+                  No. Clothing Bangladesh is a sourcing and production partner,
+                  not a factory. Every order is produced by an independently
+                  owned, vetted manufacturer in our network.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q">
+                How is your commission structured?<span class="plus">+</span>
+              </button>
+              <div class="faq-a">
+                <p>
+                  It's built into the production quote you receive, so there's
+                  no separate platform fee. You see one number per unit, and
+                  that's what you pay.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q">
+                Can you ship to me internationally?<span class="plus">+</span>
+              </button>
+              <div class="faq-a">
+                <p>
+                  Yes, to most countries. Freight and import duties are handled
+                  on our end and included in your quote, so there's nothing
+                  extra to arrange on arrival.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="cta-final" id="contact">
+        <div class="container">
+          <h2>Ready to see what your idea would cost to make?</h2>
+          <p>
+            Send a design or a reference piece and the quantity you're
+            considering. We'll come back with what's realistic: fabric, MOQ,
+            timeline, and price per unit.
+          </p>
+          <div class="cta-row">
+            <button type="button" class="btn btn-primary" data-open-quote>
+              Get a production quote
+            </button>
+            <a
+              href="mailto:hello@clothingbangladesh.com"
+              class="btn btn-line-inv"
+              >hello@clothingbangladesh.com</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="foot-grid">
+          <div>
+            <div class="foot-brand">
+              <svg
+                viewBox="40 37 140 140"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="110"
+                  cy="78"
+                  r="14"
+                  fill="none"
+                  stroke="#FFFFFF"
+                  stroke-width="8"
+                />
+                <circle cx="110" cy="78" r="6" fill="#D6483C" />
+                <line
+                  x1="110"
+                  y1="92"
+                  x2="110"
+                  y2="102"
+                  stroke="#FFFFFF"
+                  stroke-width="8"
+                  stroke-linecap="round"
+                />
+                <line
+                  x1="60"
+                  y1="102"
+                  x2="160"
+                  y2="102"
+                  stroke="#FFFFFF"
+                  stroke-width="8"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M60,102 L110,150 L160,102"
+                  fill="none"
+                  stroke="#FFFFFF"
+                  stroke-width="8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span class="brand-word">CLOTHING<span>BANGLADESH</span></span>
+            </div>
+            <p>
+              Sourcing, sampling, and production for clothing brands and merch
+              drops, run through vetted manufacturers in Bangladesh.
+            </p>
+          </div>
+          <div class="foot-col">
+            <h5>Company</h5>
+            <a href="#how">How it works</a>
+            <a href="#services">Services</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#faq">FAQ</a>
+          </div>
+          <div class="foot-col">
+            <h5>For you</h5>
+            <a href="#audiences">Launching a brand</a>
+            <a href="#audiences">Making merch</a>
+            <button type="button" class="foot-quote-link" data-open-quote>
+              Get a quote
+            </button>
+          </div>
+          <div class="foot-col">
+            <h5>Contact</h5>
+            <a href="mailto:hello@clothingbangladesh.com"
+              >hello@clothingbangladesh.com</a
+            >
+            <a href="#top">Dhaka, Bangladesh</a>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <span>© 2026 Clothing Bangladesh</span>
+          <span>Sourcing &amp; production partner, not a factory</span>
+        </div>
+        <div class="foot-legal">
+          Clothing Bangladesh is a sourcing and production partner. We do not
+          operate manufacturing facilities ourselves; all production runs
+          through independently owned and vetted manufacturers in Bangladesh.
+        </div>
+      </div>
+    </footer>
+
+    <!-- QUOTE MODAL -->
+    <div class="modal-overlay" id="quoteOverlay" aria-hidden="true">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="quoteTitle"
+      >
+        <div class="modal-head">
+          <div>
+            <h3 id="quoteTitle">Tell us what you're making</h3>
+            <p>
+              A few details and we'll come back with fabric, MOQ, timeline, and
+              price per unit.
+            </p>
+          </div>
+          <button
+            type="button"
+            class="modal-close"
+            id="quoteClose"
+            aria-label="Close"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-status" id="quoteStatus"></div>
+          <form
+            id="quoteForm"
+            action="https://formspree.io/f/myeyjedd"
+            method="POST"
+          >
+            <input
+              type="hidden"
+              name="_subject"
+              value="New quote request — Clothing Bangladesh"
+            />
+            <input
+              type="text"
+              name="_gotcha"
+              style="display: none"
+              tabindex="-1"
+              autocomplete="off"
+            />
+            <div class="field">
+              <label for="q-type">I'm...</label>
+              <div class="type-toggle">
+                <label
+                  ><input
+                    type="radio"
+                    name="inquiry_type"
+                    value="Launching a clothing brand"
+                    checked
+                  />
+                  Launching a brand</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="inquiry_type"
+                    value="Making merch/drop"
+                  />
+                  Making merch</label
+                >
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="q-name">Name</label>
+                <input type="text" id="q-name" name="name" required />
+              </div>
+              <div class="field">
+                <label for="q-email">Email</label>
+                <input type="email" id="q-email" name="email" required />
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="q-qty">Estimated quantity</label>
+                <input
+                  type="text"
+                  id="q-qty"
+                  name="quantity"
+                  placeholder="e.g. 50 units"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="q-timeline">Target timeline</label>
+                <input
+                  type="text"
+                  id="q-timeline"
+                  name="timeline"
+                  placeholder="e.g. ready by October"
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label for="q-details">Design, product, and fabric details</label>
+              <textarea
+                id="q-details"
+                name="details"
+                rows="4"
+                placeholder="What are you making, what fabric/weight, any reference garment or design link"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary modal-submit">
+              Send request
+            </button>
+            <div class="modal-note">
+              Prefer email? Write to
+              <a href="mailto:hello@clothingbangladesh.com"
+                >hello@clothingbangladesh.com</a
+              >
+              directly.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const burger = document.getElementById("burgerBtn");
+      const header = document.getElementById("siteHeader");
+      burger.addEventListener("click", () => {
+        const isOpen = header.classList.toggle("open");
+        burger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+      document.querySelectorAll(".mobile-menu a").forEach((a) => {
+        a.addEventListener("click", () => {
+          header.classList.remove("open");
+          burger.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      // Quote modal
+      const overlay = document.getElementById("quoteOverlay");
+      const closeBtn = document.getElementById("quoteClose");
+      const form = document.getElementById("quoteForm");
+      const status = document.getElementById("quoteStatus");
+
+      function openQuote() {
+        overlay.classList.add("open");
+        overlay.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        header.classList.remove("open");
+      }
+      function closeQuote() {
+        overlay.classList.remove("open");
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll("[data-open-quote]").forEach((btn) => {
+        btn.addEventListener("click", openQuote);
+      });
+      closeBtn.addEventListener("click", closeQuote);
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) closeQuote();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && overlay.classList.contains("open"))
+          closeQuote();
+      });
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        status.className = "modal-status";
+        const submitBtn = form.querySelector(".modal-submit");
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
+        try {
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" },
+          });
+          if (res.ok) {
+            status.textContent =
+              "Got it. We'll reply by email with a real quote shortly.";
+            status.className = "modal-status show success";
+            form.reset();
+            submitBtn.textContent = "Send request";
+            submitBtn.disabled = false;
+            setTimeout(closeQuote, 2200);
+          } else {
+            throw new Error("Request failed");
+          }
+        } catch (err) {
+          status.textContent =
+            "Something went wrong sending that. Please email hello@clothingbangladesh.com directly.";
+          status.className = "modal-status show error";
+          submitBtn.textContent = "Send request";
+          submitBtn.disabled = false;
+        }
+      });
+
+      document.querySelectorAll(".faq-item").forEach((item) => {
+        const q = item.querySelector(".faq-q");
+        const a = item.querySelector(".faq-a");
+        q.addEventListener("click", () => {
+          const isOpen = item.classList.contains("open");
+          document.querySelectorAll(".faq-item.open").forEach((other) => {
+            if (other !== item) {
+              other.classList.remove("open");
+              other.querySelector(".faq-a").style.maxHeight = null;
+            }
+          });
+          if (isOpen) {
+            item.classList.remove("open");
+            a.style.maxHeight = null;
+          } else {
+            item.classList.add("open");
+            a.style.maxHeight = a.scrollHeight + "px";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
