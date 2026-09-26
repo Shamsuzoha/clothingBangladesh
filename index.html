@@ -8,6 +8,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+<link rel="icon" href="/Favicon/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/Favicon/favicon.svg" />
+<link rel="icon" type="image/png" sizes="16x16" href="/Favicon/favicon-16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/Favicon/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/Favicon/favicon-192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="/Favicon/favicon-512.png" />
+<link rel="apple-touch-icon" href="/Favicon/apple-touch-icon.png" />
+<link rel="manifest" href="/Favicon/site.webmanifest" />
 <style>
   :root{
     --ink:#0c0b09; --panel:#161410; --paper:#f2ede2; --paper-dim:rgba(242,237,226,.6);
@@ -40,11 +48,11 @@
   .brand-word b{ color:var(--red); font-weight:800; }
   nav.links{ display:flex; gap:28px; font-size:14.5px; color:var(--paper-dim); }
   nav.links a:hover{ color:var(--paper); }
-  .btn{ font-family:var(--sans); font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:2px; display:inline-block; cursor:pointer; border:1px solid transparent; transition:background .18s, color .18s, border-color .18s; }
+  .btn{ appearance:none; -webkit-appearance:none; -moz-appearance:none; background:transparent; color:inherit; line-height:1.2; font-family:var(--sans); font-weight:600; font-size:14.5px; padding:11px 20px; border-radius:2px; display:inline-block; cursor:pointer; border:1px solid transparent; transition:background .18s, color .18s, border-color .18s; }
   .btn-primary{ background:var(--red); color:#fff; }
   .btn-primary:hover{ background:#a80d26; }
-  .btn-line{ border-color:var(--line-strong); color:var(--paper); }
-  .btn-line:hover{ border-color:var(--paper); background:rgba(242,237,226,.06); }
+  .btn-line{ background:transparent; border-color:var(--line-strong); color:var(--paper); }
+  .btn-line:hover{ border-color:var(--paper); background:rgba(242,237,226,.06); color:var(--paper); }
   .navcta{ display:flex; align-items:center; gap:14px; }
   .burger{ display:none; }
   @media (max-width:880px){ nav.links{ display:none; } .navcta .btn-line{ display:none; } }
@@ -98,8 +106,6 @@
   .tag-card ul{ list-style:none; display:flex; flex-direction:column; gap:9px; margin-bottom:22px; }
   .tag-card li{ font-size:14.5px; color:var(--paper-dim); padding-left:18px; position:relative; }
   .tag-card li::before{ content:''; position:absolute; left:0; top:9px; width:7px; height:1.5px; background:var(--red); }
-  .moq{ font-family:var(--mono); font-size:12.5px; border-top:1px dashed var(--line-strong); padding-top:14px; }
-  .moq b{ color:var(--paper); }
   @media (max-width:820px){ .tags{ grid-template-columns:1fr; } }
 
   .manifest{ border-top:1px solid var(--line); }
@@ -157,6 +163,34 @@
 
   :focus-visible{ outline:2px solid var(--red); outline-offset:2px; }
   @media (prefers-reduced-motion: reduce){ #heroCanvas{ display:none; } }
+
+  /* ---------- custom cursor ---------- */
+  @media (hover:hover) and (pointer:fine){
+    html, body, a, button, .btn, summary{ cursor:none; }
+    .cursor-dot, .cursor-ring{ position:fixed; top:0; left:0; z-index:9999; pointer-events:none; border-radius:50%; transform:translate(-50%,-50%); will-change:transform; }
+    .cursor-dot{ width:6px; height:6px; background:var(--red); transition:opacity .15s; }
+    .cursor-ring{ width:34px; height:34px; border:1px solid var(--paper); opacity:.55; transition:width .18s, height .18s, opacity .18s, border-color .18s, background-color .18s; }
+    .cursor-ring.is-hover{ width:54px; height:54px; border-color:var(--red); background:rgba(200,16,46,.08); opacity:.9; }
+    .cursor-ring.is-down{ width:26px; height:26px; }
+    body.cursor-hidden .cursor-dot, body.cursor-hidden .cursor-ring{ opacity:0; }
+  }
+
+  /* ---------- quote popup modal ---------- */
+  .modal-overlay{ position:fixed; inset:0; z-index:200; display:none; align-items:center; justify-content:center; padding:24px; background:rgba(12,11,9,.78); backdrop-filter:blur(3px); }
+  .modal-overlay.is-open{ display:flex; }
+  .modal-box{ width:100%; max-width:440px; background:var(--panel); border:1px solid var(--line-strong); position:relative; padding:34px 30px 30px; }
+  .modal-close{ position:absolute; top:14px; right:14px; width:32px; height:32px; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:18px; color:var(--paper-dim); background:none; border:none; cursor:pointer; }
+  .modal-close:hover{ color:var(--paper); }
+  .modal-box h3{ font-size:26px; margin-bottom:8px; }
+  .modal-box .sub{ color:var(--paper-dim); font-size:14.5px; margin-bottom:24px; }
+  .field{ margin-bottom:16px; }
+  .field label{ display:block; font-family:var(--mono); font-size:12px; color:var(--paper-dim); margin-bottom:7px; }
+  .field input, .field textarea{ width:100%; background:var(--ink); border:1px solid var(--line-strong); color:var(--paper); font-family:var(--sans); font-size:14.5px; padding:11px 12px; border-radius:2px; }
+  .field input:focus, .field textarea:focus{ outline:none; border-color:var(--red); }
+  .field textarea{ resize:vertical; min-height:90px; }
+  .modal-box .btn-primary{ width:100%; text-align:center; border:none; font-size:15px; }
+  .modal-note{ margin-top:14px; font-size:12.5px; color:var(--paper-dim); text-align:center; }
+  .modal-note.is-error{ color:var(--red); }
 </style>
 </head>
 <body>
@@ -181,10 +215,27 @@
       <a href="#faq">FAQ</a>
     </nav>
     <div class="navcta">
-      <a href="#contact" class="btn btn-line">Get a quote</a>
+      <button type="button" class="btn btn-line js-open-quote" id="openQuoteBtn">Get a quote</button>
     </div>
   </div>
 </header>
+
+<div class="modal-overlay" id="quoteOverlay">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="quoteModalTitle">
+    <button type="button" class="modal-close" id="closeQuoteBtn" aria-label="Close">&times;</button>
+    <h3 id="quoteModalTitle">Get a production quote</h3>
+    <p class="sub">Tell us what you're making. We'll reply with fabric, MOQ, timeline and price.</p>
+    <form id="quoteForm" action="https://formspree.io/f/myeyjedd" method="POST">
+      <div class="field"><label for="qName">Name</label><input type="text" id="qName" name="name" required /></div>
+      <div class="field"><label for="qEmail">Email</label><input type="email" id="qEmail" name="email" required /></div>
+      <div class="field"><label for="qQuantity">Quantity</label><input type="text" id="qQuantity" name="quantity" placeholder="e.g. 100 units" required /></div>
+      <div class="field"><label for="qTimeline">Timeline</label><input type="text" id="qTimeline" name="timeline" placeholder="e.g. 6-8 weeks, or a target date" required /></div>
+      <div class="field"><label for="qDetails">What are you looking to make?</label><textarea id="qDetails" name="details" required></textarea></div>
+      <button type="submit" class="btn btn-primary" id="quoteSubmitBtn">Send request</button>
+      <div class="modal-note" id="quoteFormNote"></div>
+    </form>
+  </div>
+</div>
 
 <main id="top">
   <section class="hero">
@@ -194,7 +245,7 @@
       <h1>Start a clothing line without becoming a manufacturer.</h1>
       <p class="lead">We connect founders, small brands and creators with vetted garment factories across Bangladesh, and run sourcing, sampling and production on orders as small as a few dozen pieces.</p>
       <div class="hero-ctas">
-        <a href="#contact" class="btn btn-primary">Get a production quote</a>
+        <button type="button" class="btn btn-primary js-open-quote">Get a quote</button>
         <a href="#how" class="btn btn-line">See how it works</a>
       </div>
       <div class="hero-note">No cost to ask for a quote. You only pay for what gets made.</div>
@@ -241,11 +292,9 @@
       <div class="tags">
         <div class="tag-card"><div class="who">For founders</div><h3>Launching a clothing brand</h3><p>You're building an actual line, hoodies, tees, outerwear, and you need it done properly from the first run rather than just cheaply.</p>
           <ul><li>Tech pack and pattern review before anything gets cut</li><li>Fabric and trim sourcing to your spec</li><li>Small pilot runs before you commit to volume</li><li>Support scaling reorders once a style sells</li></ul>
-          <div class="moq">Typical MOQ <b>36 to 100 units</b></div>
         </div>
         <div class="tag-card"><div class="who">For creators</div><h3>Making merch that isn't a gamble</h3><p>You need real product, fast, without holding inventory you can't move or chasing down a factory on your own.</p>
           <ul><li>Runs as small as two or three dozen pieces per style</li><li>Fast turnaround for drops tied to a launch date</li><li>Reprints of exactly what sold, no reguessing sizes</li><li>Your branding and tags, not ours</li></ul>
-          <div class="moq">Typical MOQ <b>24 to 60 units</b></div>
         </div>
       </div>
     </div>
@@ -288,7 +337,7 @@
         <p>If a quote changes mid-production because of a fabric substitution or spec change, you're told before it happens, not after.</p>
       </div>
       <div class="invoice">
-        <div class="inv-head"><div class="label">Example order</div><h4>50 hoodies, 320gsm fleece</h4></div>
+        <div class="inv-head"><div class="label">Example order</div><h4>100 hoodies, 320gsm fleece</h4></div>
         <div class="inv-body">
           <div class="irow"><span>Factory production cost</span><span>$11.20 / unit</span></div>
           <div class="irow"><span>Our commission, built in</span><span>$1.80 / unit</span></div>
@@ -319,7 +368,7 @@
       <p>Send a design or a reference piece and the quantity you're considering. We'll come back with what's realistic: fabric, MOQ, timeline and price per unit.</p>
       <div class="cta-row">
         <a href="mailto:hello@clothingbangladesh.com?subject=Production%20quote%20request" class="btn btn-primary">Get a production quote</a>
-        <a href="mailto:hello@clothingbangladesh.com" class="mail">hello@clothingbangladesh.com</a>
+        <a href="mailto:hello@clothingbangladesh.com?subject=Contact%20us" class="btn btn-line">Contact us</a>
       </div>
     </div>
   </section>
@@ -349,6 +398,98 @@
     <div class="flegal">Clothing Bangladesh is a sourcing and production partner. We do not operate manufacturing facilities ourselves; all production runs through independently owned and vetted manufacturers in Bangladesh.</div>
   </div>
 </footer>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<script>
+(function(){
+  if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  var dot = document.getElementById('cursorDot');
+  var ring = document.getElementById('cursorRing');
+  var rx = 0, ry = 0, mx = 0, my = 0;
+  var seen = false;
+  window.addEventListener('mousemove', function(e){
+    mx = e.clientX; my = e.clientY;
+    dot.style.transform = 'translate('+mx+'px,'+my+'px) translate(-50%,-50%)';
+    if(!seen){ rx = mx; ry = my; seen = true; }
+  });
+  window.addEventListener('mouseleave', function(){ document.body.classList.add('cursor-hidden'); });
+  window.addEventListener('mouseenter', function(){ document.body.classList.remove('cursor-hidden'); });
+  window.addEventListener('mousedown', function(){ ring.classList.add('is-down'); });
+  window.addEventListener('mouseup', function(){ ring.classList.remove('is-down'); });
+  function tick(){
+    rx += (mx-rx)*0.18; ry += (my-ry)*0.18;
+    ring.style.transform = 'translate('+rx+'px,'+ry+'px) translate(-50%,-50%)';
+    requestAnimationFrame(tick);
+  }
+  tick();
+  var hoverables = 'a, button, .btn, summary, input, textarea';
+  document.addEventListener('mouseover', function(e){
+    if(e.target.closest(hoverables)) ring.classList.add('is-hover');
+  });
+  document.addEventListener('mouseout', function(e){
+    if(e.target.closest(hoverables)) ring.classList.remove('is-hover');
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var overlay = document.getElementById('quoteOverlay');
+  var openBtns = document.querySelectorAll('.js-open-quote');
+  var closeBtn = document.getElementById('closeQuoteBtn');
+  var form = document.getElementById('quoteForm');
+  var note = document.getElementById('quoteFormNote');
+  var submitBtn = document.getElementById('quoteSubmitBtn');
+  var lastFocused = null;
+
+  function openModal(){
+    lastFocused = document.activeElement;
+    overlay.classList.add('is-open');
+    var first = document.getElementById('qName');
+    if(first) first.focus();
+    document.addEventListener('keydown', onKeydown);
+  }
+  function closeModal(){
+    overlay.classList.remove('is-open');
+    document.removeEventListener('keydown', onKeydown);
+    if(lastFocused) lastFocused.focus();
+  }
+  function onKeydown(e){ if(e.key === 'Escape') closeModal(); }
+
+  openBtns.forEach(function(btn){ btn.addEventListener('click', openModal); });
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) closeModal(); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    note.textContent = 'Sending...';
+    note.classList.remove('is-error');
+    submitBtn.disabled = true;
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res){
+      if(res.ok){
+        note.textContent = "Thanks — we'll get back to you shortly.";
+        form.reset();
+        setTimeout(closeModal, 1800);
+      } else {
+        return res.json().then(function(data){
+          throw new Error((data && data.errors) ? data.errors.map(function(x){return x.message;}).join(', ') : 'Something went wrong.');
+        });
+      }
+    }).catch(function(err){
+      note.textContent = err.message || "Couldn't send — please email us instead.";
+      note.classList.add('is-error');
+    }).finally(function(){
+      submitBtn.disabled = false;
+    });
+  });
+})();
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -440,11 +581,20 @@
       mouseY = (e.clientY/window.innerHeight - 0.5);
     });
 
+    // rotation only advances with scroll, never on its own
+    var targetRotation = 0;
+    var lastScrollY = window.scrollY;
+    window.addEventListener('scroll', function(){
+      var y = window.scrollY;
+      targetRotation += (y - lastScrollY) * 0.0022;
+      lastScrollY = y;
+    }, { passive:true });
+
     var clock = new THREE.Clock();
     function animate(){
       requestAnimationFrame(animate);
       var t = clock.getElapsedTime();
-      rig.rotation.y += 0.0016;
+      rig.rotation.y += (targetRotation - rig.rotation.y) * 0.08;
       var pos = dustGeo.attributes.position;
       for(var i=0;i<dustCount;i++){
         var y = pos.getY(i) + speeds[i]*0.004;
