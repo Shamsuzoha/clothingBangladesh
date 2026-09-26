@@ -62,9 +62,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
     <link rel="icon" href="/Favicon/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/Favicon/favicon.svg" />
     <link
@@ -1828,165 +1841,193 @@
       })();
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
       (function () {
-        try {
-          var canvas = document.getElementById("heroCanvas");
-          var scene = new THREE.Scene();
-          var camera = new THREE.PerspectiveCamera(
-            42,
-            canvas.clientWidth / canvas.clientHeight,
-            0.1,
-            100,
-          );
-          camera.position.set(0, 3.4, 9.5);
-          var renderer = new THREE.WebGLRenderer({
-            canvas: canvas,
-            antialias: true,
-            alpha: true,
-          });
-          renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-          function size() {
-            var w = canvas.clientWidth,
-              h = canvas.clientHeight;
-            renderer.setSize(w, h, false);
-            camera.aspect = w / h;
-            camera.updateProjectionMatrix();
-          }
-          window.addEventListener("resize", size);
+        // Skip loading the ~600KB three.js library entirely for users who
+        // have it hidden anyway via prefers-reduced-motion (see CSS above).
+        if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ) {
+          return;
+        }
 
-          var rig = new THREE.Group();
-          scene.add(rig);
-
-          // ground grid, tilted like a map on a table
-          var grid = new THREE.GridHelper(20, 28, 0x7c0a1e, 0x2a2620);
-          grid.position.y = -1.4;
-          grid.material.opacity = 0.35;
-          grid.material.transparent = true;
-          rig.add(grid);
-
-          var paper = new THREE.Color(0xf2ede2),
-            red = new THREE.Color(0xc8102e);
-
-          function makePin(x, z, scale) {
-            var g = new THREE.Group();
-            var cone = new THREE.Mesh(
-              new THREE.ConeGeometry(0.22 * scale, 0.75 * scale, 20),
-              new THREE.MeshBasicMaterial({ color: 0x0c0b09 }),
+        function initHero() {
+          try {
+            var canvas = document.getElementById("heroCanvas");
+            var scene = new THREE.Scene();
+            var camera = new THREE.PerspectiveCamera(
+              42,
+              canvas.clientWidth / canvas.clientHeight,
+              0.1,
+              100,
             );
-            var wire = new THREE.Mesh(
-              new THREE.ConeGeometry(0.22 * scale, 0.75 * scale, 20),
-              new THREE.MeshBasicMaterial({
-                color: paper,
-                wireframe: true,
+            camera.position.set(0, 3.4, 9.5);
+            var renderer = new THREE.WebGLRenderer({
+              canvas: canvas,
+              antialias: true,
+              alpha: true,
+            });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            function size() {
+              var w = canvas.clientWidth,
+                h = canvas.clientHeight;
+              renderer.setSize(w, h, false);
+              camera.aspect = w / h;
+              camera.updateProjectionMatrix();
+            }
+            window.addEventListener("resize", size);
+
+            var rig = new THREE.Group();
+            scene.add(rig);
+
+            // ground grid, tilted like a map on a table
+            var grid = new THREE.GridHelper(20, 28, 0x7c0a1e, 0x2a2620);
+            grid.position.y = -1.4;
+            grid.material.opacity = 0.35;
+            grid.material.transparent = true;
+            rig.add(grid);
+
+            var paper = new THREE.Color(0xf2ede2),
+              red = new THREE.Color(0xc8102e);
+
+            function makePin(x, z, scale) {
+              var g = new THREE.Group();
+              var cone = new THREE.Mesh(
+                new THREE.ConeGeometry(0.22 * scale, 0.75 * scale, 20),
+                new THREE.MeshBasicMaterial({ color: 0x0c0b09 }),
+              );
+              var wire = new THREE.Mesh(
+                new THREE.ConeGeometry(0.22 * scale, 0.75 * scale, 20),
+                new THREE.MeshBasicMaterial({
+                  color: paper,
+                  wireframe: true,
+                  transparent: true,
+                  opacity: 0.5,
+                }),
+              );
+              cone.add(wire);
+              cone.position.y = -1.4 + 0.375 * scale;
+              var ball = new THREE.Mesh(
+                new THREE.SphereGeometry(0.16 * scale, 16, 16),
+                new THREE.MeshBasicMaterial({ color: red }),
+              );
+              ball.position.y = cone.position.y + 0.6 * scale;
+              g.add(cone, ball);
+              g.position.set(x, 0, z);
+              return {
+                group: g,
+                top: new THREE.Vector3(x, ball.position.y + 0.3, z),
+              };
+            }
+
+            var pinA = makePin(0, 0, 1.35);
+            var pinB = makePin(-3.4, -1.6, 0.9);
+            var pinC = makePin(3.7, 2.0, 0.95);
+            rig.add(pinA.group, pinB.group, pinC.group);
+
+            function threadBetween(p1, p2) {
+              var mid = p1.clone().add(p2).multiplyScalar(0.5);
+              mid.y += 1.6;
+              var curve = new THREE.QuadraticBezierCurve3(p1, mid, p2);
+              var pts = curve.getPoints(40);
+              var geo = new THREE.BufferGeometry().setFromPoints(pts);
+              var mat = new THREE.LineBasicMaterial({
+                color: 0xc8102e,
                 transparent: true,
-                opacity: 0.5,
-              }),
-            );
-            cone.add(wire);
-            cone.position.y = -1.4 + 0.375 * scale;
-            var ball = new THREE.Mesh(
-              new THREE.SphereGeometry(0.16 * scale, 16, 16),
-              new THREE.MeshBasicMaterial({ color: red }),
-            );
-            ball.position.y = cone.position.y + 0.6 * scale;
-            g.add(cone, ball);
-            g.position.set(x, 0, z);
-            return {
-              group: g,
-              top: new THREE.Vector3(x, ball.position.y + 0.3, z),
-            };
-          }
+                opacity: 0.55,
+              });
+              return new THREE.Line(geo, mat);
+            }
+            rig.add(threadBetween(pinA.top, pinB.top));
+            rig.add(threadBetween(pinA.top, pinC.top));
+            rig.add(threadBetween(pinB.top, pinC.top));
 
-          var pinA = makePin(0, 0, 1.35);
-          var pinB = makePin(-3.4, -1.6, 0.9);
-          var pinC = makePin(3.7, 2.0, 0.95);
-          rig.add(pinA.group, pinB.group, pinC.group);
-
-          function threadBetween(p1, p2) {
-            var mid = p1.clone().add(p2).multiplyScalar(0.5);
-            mid.y += 1.6;
-            var curve = new THREE.QuadraticBezierCurve3(p1, mid, p2);
-            var pts = curve.getPoints(40);
-            var geo = new THREE.BufferGeometry().setFromPoints(pts);
-            var mat = new THREE.LineBasicMaterial({
-              color: 0xc8102e,
+            // drifting fibre dust
+            var dustCount = 260;
+            var dustGeo = new THREE.BufferGeometry();
+            var positions = new Float32Array(dustCount * 3);
+            var speeds = new Float32Array(dustCount);
+            for (var i = 0; i < dustCount; i++) {
+              positions[i * 3] = (Math.random() - 0.5) * 16;
+              positions[i * 3 + 1] = Math.random() * 6 - 1;
+              positions[i * 3 + 2] = (Math.random() - 0.5) * 16;
+              speeds[i] = 0.15 + Math.random() * 0.25;
+            }
+            dustGeo.setAttribute(
+              "position",
+              new THREE.BufferAttribute(positions, 3),
+            );
+            var dustMat = new THREE.PointsMaterial({
+              color: 0xf2ede2,
+              size: 0.028,
               transparent: true,
               opacity: 0.55,
             });
-            return new THREE.Line(geo, mat);
-          }
-          rig.add(threadBetween(pinA.top, pinB.top));
-          rig.add(threadBetween(pinA.top, pinC.top));
-          rig.add(threadBetween(pinB.top, pinC.top));
+            var dust = new THREE.Points(dustGeo, dustMat);
+            rig.add(dust);
 
-          // drifting fibre dust
-          var dustCount = 260;
-          var dustGeo = new THREE.BufferGeometry();
-          var positions = new Float32Array(dustCount * 3);
-          var speeds = new Float32Array(dustCount);
-          for (var i = 0; i < dustCount; i++) {
-            positions[i * 3] = (Math.random() - 0.5) * 16;
-            positions[i * 3 + 1] = Math.random() * 6 - 1;
-            positions[i * 3 + 2] = (Math.random() - 0.5) * 16;
-            speeds[i] = 0.15 + Math.random() * 0.25;
-          }
-          dustGeo.setAttribute(
-            "position",
-            new THREE.BufferAttribute(positions, 3),
-          );
-          var dustMat = new THREE.PointsMaterial({
-            color: 0xf2ede2,
-            size: 0.028,
-            transparent: true,
-            opacity: 0.55,
-          });
-          var dust = new THREE.Points(dustGeo, dustMat);
-          rig.add(dust);
+            var mouseX = 0,
+              mouseY = 0;
+            window.addEventListener("mousemove", function (e) {
+              mouseX = e.clientX / window.innerWidth - 0.5;
+              mouseY = e.clientY / window.innerHeight - 0.5;
+            });
 
-          var mouseX = 0,
-            mouseY = 0;
-          window.addEventListener("mousemove", function (e) {
-            mouseX = e.clientX / window.innerWidth - 0.5;
-            mouseY = e.clientY / window.innerHeight - 0.5;
-          });
+            // rotation only advances with scroll, never on its own
+            var targetRotation = 0;
+            var lastScrollY = window.scrollY;
+            window.addEventListener(
+              "scroll",
+              function () {
+                var y = window.scrollY;
+                targetRotation += (y - lastScrollY) * 0.0022;
+                lastScrollY = y;
+              },
+              { passive: true },
+            );
 
-          // rotation only advances with scroll, never on its own
-          var targetRotation = 0;
-          var lastScrollY = window.scrollY;
-          window.addEventListener(
-            "scroll",
-            function () {
-              var y = window.scrollY;
-              targetRotation += (y - lastScrollY) * 0.0022;
-              lastScrollY = y;
-            },
-            { passive: true },
-          );
-
-          var clock = new THREE.Clock();
-          function animate() {
-            requestAnimationFrame(animate);
-            var t = clock.getElapsedTime();
-            rig.rotation.y += (targetRotation - rig.rotation.y) * 0.08;
-            var pos = dustGeo.attributes.position;
-            for (var i = 0; i < dustCount; i++) {
-              var y = pos.getY(i) + speeds[i] * 0.004;
-              if (y > 5) y = -1.4;
-              pos.setY(i, y);
+            var clock = new THREE.Clock();
+            function animate() {
+              requestAnimationFrame(animate);
+              var t = clock.getElapsedTime();
+              rig.rotation.y += (targetRotation - rig.rotation.y) * 0.08;
+              var pos = dustGeo.attributes.position;
+              for (var i = 0; i < dustCount; i++) {
+                var y = pos.getY(i) + speeds[i] * 0.004;
+                if (y > 5) y = -1.4;
+                pos.setY(i, y);
+              }
+              pos.needsUpdate = true;
+              camera.position.x += (mouseX * 2.2 - camera.position.x) * 0.02;
+              camera.position.y +=
+                (3.4 - mouseY * 1.2 - camera.position.y) * 0.02;
+              camera.lookAt(0, 0.3, 0);
+              renderer.render(scene, camera);
             }
-            pos.needsUpdate = true;
-            camera.position.x += (mouseX * 2.2 - camera.position.x) * 0.02;
-            camera.position.y +=
-              (3.4 - mouseY * 1.2 - camera.position.y) * 0.02;
-            camera.lookAt(0, 0.3, 0);
-            renderer.render(scene, camera);
+            size();
+            animate();
+          } catch (e) {
+            /* three.js unavailable, hero still reads fine without it */
           }
-          size();
-          animate();
-        } catch (e) {
-          /* three.js unavailable, hero still reads fine without it */
+        }
+
+        // Fetch and run three.js only once the page has finished loading
+        // (or the browser is idle), so it never competes with LCP/critical
+        // content for bandwidth or main-thread time.
+        function loadThreeAndInit() {
+          var s = document.createElement("script");
+          s.src =
+            "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
+          s.onload = initHero;
+          document.body.appendChild(s);
+        }
+        if ("requestIdleCallback" in window) {
+          window.addEventListener("load", function () {
+            requestIdleCallback(loadThreeAndInit, { timeout: 2000 });
+          });
+        } else {
+          window.addEventListener("load", loadThreeAndInit);
         }
       })();
     </script>
