@@ -9,7 +9,7 @@
     <title>Clothing Bangladesh: garment sourcing and production in Dhaka</title>
     <meta
       name="description"
-      content="Start a clothing line or a merch drop without becoming a manufacturer. Clothing Bangladesh sources, samples and produces through vetted factories in Dhaka, Chattogram and Gazipur, on small production runs."
+      content="Start a clothing line or a merch drop without becoming a manufacturer. Vetted factories in Dhaka, Chattogram and Gazipur, low-MOQ runs from a few dozen pieces."
     />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://clothingbangladesh.com/" />
@@ -113,6 +113,10 @@
         "logo": "https://clothingbangladesh.com/Favicon/favicon-512.png",
         "email": "hello@clothingbangladesh.com",
         "description": "Garment sourcing and production partner connecting founders, small brands and creators with vetted clothing factories in Dhaka, Chattogram and Gazipur, Bangladesh, for small production runs.",
+        "sameAs": [
+          "https://www.instagram.com/clothingbangladeshbd/",
+          "https://www.facebook.com/profile.php?id=61595048361001"
+        ],
         "areaServed": "Worldwide",
         "address": {
           "@type": "PostalAddress",
@@ -1748,7 +1752,18 @@
             <h5>Contact</h5>
             <a href="mailto:hello@clothingbangladesh.com"
               >hello@clothingbangladesh.com</a
-            ><a href="#top">Dhaka, Bangladesh</a>
+            ><a href="#top">Dhaka, Bangladesh</a
+            ><a
+              href="https://www.instagram.com/clothingbangladeshbd/"
+              target="_blank"
+              rel="noopener"
+              >Instagram</a
+            ><a
+              href="https://www.facebook.com/profile.php?id=61595048361001"
+              target="_blank"
+              rel="noopener"
+              >Facebook</a
+            >
           </div>
         </div>
         <div class="fbottom">
@@ -1893,9 +1908,25 @@
       })();
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
       (function () {
+        var reduceMotion =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var heroCanvas = document.getElementById("heroCanvas");
+        if (reduceMotion) {
+          // Respect the user's OS-level preference: skip loading three.js
+          // entirely rather than just hiding the canvas after the fact.
+          if (heroCanvas) heroCanvas.style.display = "none";
+          return;
+        }
+        var threeScript = document.createElement("script");
+        threeScript.src =
+          "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
+        threeScript.onload = initHero;
+        document.body.appendChild(threeScript);
+
+        function initHero() {
         try {
           var canvas = document.getElementById("heroCanvas");
           var scene = new THREE.Scene();
@@ -2052,6 +2083,7 @@
           animate();
         } catch (e) {
           /* three.js unavailable, hero still reads fine without it */
+        }
         }
       })();
     </script>
