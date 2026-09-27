@@ -2095,8 +2095,12 @@
           );
 
           var clock = new THREE.Clock();
+          var rafId = null;
+          var tabVisible = document.visibilityState === "visible";
+          var heroInView = true;
+
           function animate() {
-            requestAnimationFrame(animate);
+            rafId = requestAnimationFrame(animate);
             var t = clock.getElapsedTime();
             rig.rotation.y += (targetRotation - rig.rotation.y) * 0.08;
             var pos = dustGeo.attributes.position;
@@ -2112,6 +2116,37 @@
             camera.lookAt(0, 0.3, 0);
             renderer.render(scene, camera);
           }
+          function startAnimating() {
+            if (rafId === null) animate();
+          }
+          function stopAnimating() {
+            if (rafId !== null) {
+              cancelAnimationFrame(rafId);
+              rafId = null;
+            }
+          }
+          function syncAnimating() {
+            if (tabVisible && heroInView) startAnimating();
+            else stopAnimating();
+          }
+
+          // No point paying for a WebGL frame every 16ms once the hero has
+          // scrolled off screen, or while the tab itself isn't visible —
+          // this was the main driver of main-thread work on the page.
+          if (window.IntersectionObserver) {
+            new IntersectionObserver(
+              function (entries) {
+                heroInView = entries[0].isIntersecting;
+                syncAnimating();
+              },
+              { threshold: 0 },
+            ).observe(canvas);
+          }
+          document.addEventListener("visibilitychange", function () {
+            tabVisible = document.visibilityState === "visible";
+            syncAnimating();
+          });
+
           size();
           animate();
         } catch (e) {
